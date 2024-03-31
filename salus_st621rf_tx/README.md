@@ -4,14 +4,14 @@ A popular heating controller from the early 2010's. Uses an unknown Samsung MCU 
 
 Interception with a logic level analyser reveals it is using standard SPI to communicate to the CC1150 transmitter.
 
-SummarY:
+TL/DR:
 
 * It's easy to turn the heating off any off via. replay attack. 
 * Pairing between the Salus thermometor to the heater simply changes some random values in the messages that are sent to the heater. I wasn't bothered to try and reverse engineer this.
 * All one needs to do is use the same ChipCon config with say a CC1101, capture a sent messages for both turning ON the heating and OFF, and then replay these when one wants to turn the heating on or off.
 * The payload sent over the air to the heater is simply akin to 'turn on heating' and 'turn off heating', and the temperature is irrelevant. All the boiler gets told is to be ON or OFF.
 
-** RF Settings **
+## RF Settings 
 
 From SPI interception, the ChipCon configuration register values for the CC1150 are as follows:
 
@@ -53,7 +53,7 @@ These could be used with a CC1101 that supports the right frequency band. In my 
 Salus ST621RF(TX) - Inspecting the data transmitted over the air to turn the heating on and off.
 https://support.salus-tech.com/portal/en/kb/articles/st620-series-thermostat-manuals
 
-** RF Payload Data Interception **
+## RF Payload Data Interception 
 
 Values are different every time one pairs a controller to their boiler, but as stated above. These are those captured from my analysis, patterns can be noted.
 
@@ -108,7 +108,7 @@ A few bytes are different, most are the same, but I have no idea why.
 
 ```
 
-** Make you're own controller **
+## Make your own controller 
 
 At minimum, you'd need a MCU (like the ESP32) and a CC1101 868Mhz.
 
@@ -135,7 +135,7 @@ https://www.aliexpress.com/item/1005005315348507.html?spm=a2g0o.cart.0.0.a4d838d
 1pc Waterproof Black/white Housing Instrument Case ABS Plastic Project Box Storage Case Enclosure Boxes Electronic Supplies
 https://www.aliexpress.com/item/1005005467340473.html?spm=a2g0o.cart.0.0.a4d838dadmigBI&mp=1
 
-** Images ***
+## Some more photos
 
 ![Interception](salus_621rf_tx.jpg)
 
