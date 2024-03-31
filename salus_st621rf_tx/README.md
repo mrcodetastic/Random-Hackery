@@ -108,6 +108,17 @@ A few bytes are different, most are the same, but I have no idea why.
 
 ```
 
+Pins on the PCB connecting to the CC1150 were noted as doing the following:
+
+```
+SO = Serial Out - aka. MISO
+SI = Serial In  - ala. MOSI
+LOK = ?
+H_OFF = Slave Select
+H_ON  = Clock
+
+```
+
 ## Make your own controller 
 
 At minimum, you'd need a MCU (like the ESP32) and a CC1101 868Mhz.
