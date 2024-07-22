@@ -1,0 +1,19 @@
+ {
+  "name": "Easy CC1101 - Sub-1GHz",
+  "keywords": "iot, esp8266, esp32, avr, cc1101, communication, transmit, receive, frequency, mesh",
+  "description": "An easy to use library to send and receive messages between devices using the Texas Instruments CC1101 Low-Power Sub-1GHz RF Transceiver",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mrcodetastic/Easy-IoT-Arduino-CC1101.git"
+  },
+  "authors": {
+    "name": "Codetastic",
+    "url": "https://github.com/mrcodetastic/"
+  },
+  "version": "2.0.4",
+  "frameworks": "arduino",
+  "platforms": "*",
+  "examples": [
+		"examples/Simple_TX_and_RX/Simple_TX_and_RX.ino"
+  ]
+}
