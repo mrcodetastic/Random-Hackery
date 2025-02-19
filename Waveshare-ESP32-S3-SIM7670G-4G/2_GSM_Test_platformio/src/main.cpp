@@ -28,7 +28,7 @@ Wait for the modem to register with the network.
 Online registration successful
 
 Registration Status:1
-Inquiring UE system information:LTE,Online,234-15,0x1833,4568092,258,EUTRAN-BAND7,2850,5,5,-6,-85,-79,33
+Inquiring UE system information:LTE,Online
 Network IP:
 Request URL : http://httpbin.org/get
 Got some data??
