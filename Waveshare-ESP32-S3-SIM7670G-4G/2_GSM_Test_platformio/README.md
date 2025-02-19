@@ -1,3 +1,7 @@
+## Useful links
+
+https://github.com/mhavill/Waveshare-SIM/
+
 https://github.com/Xinyuan-LilyGO/LilyGO-T-A76XX/blob/main/examples/HttpsBuiltlnGet/HttpsBuiltlnGet.ino
 
 https://www.waveshare.com/wiki/ESP32-S3-SIM7670G-4G
