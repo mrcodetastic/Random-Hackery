@@ -79,8 +79,8 @@ void setup()
 
     // Standard panel type natively supported by this library (Example 1)
     HUB75_I2S_CFG mxconfig(
-      16,   
-      8,  
+      64,   
+      32,  
       1   ,
       _pins_x1 
     );
