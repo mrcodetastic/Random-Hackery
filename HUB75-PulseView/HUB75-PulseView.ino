@@ -176,7 +176,23 @@ void loop() {
                     Serial.println(x);                    
                 }                
 
-            }            
+            }  
+            else if (input.charAt(0) == 'f') {
+                Serial.println("Lets draw a line forever! Exciting");
+
+                for (int i = 0; i < 10; i++) {
+                for (int16_t x = 0; x < dma_display->width(); x++) {                                    
+                    dma_display->drawLine(x, 0, x, dma_display->height(), 0xFFFF);
+
+                    if ( x > 0 ) {
+                      dma_display->drawLine(x-1, 0, x-1, dma_display->height(), 0x00);
+                    }                 
+                    delay(6);                
+                  }                
+                }
+
+            }  
+
         } else if (input.length() > 1) {
             char cmd = input.charAt(0);
             int value = input.substring(1).toInt();
