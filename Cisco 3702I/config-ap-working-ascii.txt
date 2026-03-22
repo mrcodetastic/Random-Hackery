@@ -1,0 +1,138 @@
+! Cisco Air CAP3702I WAP
+! Write:
+! write erase
+! copy tftp: startup-config
+! reload
+
+! NVRAM config last updated at 22:25:17 +0000 Sat Oct 11 2025
+version 15.3
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+!
+hostname ap3702
+!
+!
+logging rate-limit console 9
+!enable secret 5 $1$B5th$0Hn8xNWy9ZJ24hn5BDiro/
+enable password secretpass
+
+!
+aaa new-model
+!
+!
+aaa authentication login default local
+!
+!
+!
+!
+!
+aaa session-id common
+clock timezone +0000 0 0
+no ip source-route
+no ip cef
+ip domain name wap3702.local
+!
+!
+!
+!
+dot11 pause-time 100
+dot11 syslog
+!
+dot11 ssid Cisco_5G
+!   authentication open 
+   authentication key-management wpa version 2
+   guest-mode
+
+! Plain text password:   
+   wpa-psk ascii 0 wifipass1234
+   
+!
+!
+!
+no ipv6 cef
+!
+!
+!
+! Save this stuff as plain text.
+username Cisco password adminpass
+username admin privilege 15 password adminpass
+
+!
+!
+bridge irb
+!
+!
+!
+interface Dot11Radio0
+ no ip address
+ shutdown
+ antenna gain 0
+ station-role root
+ bridge-group 1
+ bridge-group 1 subscriber-loop-control
+ bridge-group 1 spanning-disabled
+ bridge-group 1 block-unknown-source
+ no bridge-group 1 source-learning
+ no bridge-group 1 unicast-flooding
+!
+interface Dot11Radio1
+ no ip address
+ !
+ encryption mode ciphers aes-ccm 
+ !
+ ssid Cisco_5G
+ !
+ antenna gain 0
+ peakdetect
+ no dfs band block
+ speed  basic-6.0 9.0 basic-12.0 18.0 basic-24.0 36.0 48.0 54.0 m0. m1. m2. m3. m4. m5. m6. m7. m8. m9. m10. m11. m12. m13. m14. m15. m16. m17. m18. m19. m20. m21. m22. m23. a1ss9 a2ss9 a3ss9
+ power local 11
+ channel width 40-above
+ channel 5180
+ station-role root
+ no dot11 extension aironet
+ bridge-group 1
+ bridge-group 1 subscriber-loop-control
+ bridge-group 1 spanning-disabled
+ bridge-group 1 block-unknown-source
+ no bridge-group 1 source-learning
+ no bridge-group 1 unicast-flooding
+!
+interface GigabitEthernet0
+ no ip address
+ duplex auto
+ speed auto
+ bridge-group 1
+ bridge-group 1 spanning-disabled
+ no bridge-group 1 source-learning
+!
+interface BVI1
+ mac-address 70df.2f35.1c48
+ ip address dhcp client-id GigabitEthernet0
+ ipv6 address dhcp
+ ipv6 address autoconfig
+ ipv6 enable
+!
+ip forward-protocol nd
+ip http server
+no ip http secure-server
+ip http help-path http://www.cisco.com/warp/public/779/smbiz/prodconfig/help/eag
+no ip ssh version 2
+!
+!
+!
+bridge 1 route ip
+!
+!
+!
+line con 0
+ speed 9600
+ 
+line vty 0 4
+ transport input ssh
+!
+sntp server uk.pool.ntp.org
+sntp broadcast client
+end
